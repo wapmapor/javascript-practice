@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>JavaScript Practice</title>
   <style>
-    button {
+    #task-buttons button {
       margin: 10px;
       padding: 10px 20px;
       font-size: 16px;
@@ -15,36 +15,34 @@
   <h1>ようこそ！JavaScript課題集</h1>
   <p>以下のボタンをクリックして各課題に移動してください：</p>
 
-  <button onclick="location.href='controlFlow/control_flow.html'">
-    制御構文（control flow）課題へ
-  </button>
-  <button onclick="location.href='calculateArea/grocery_Tracker.html'">
-    制御構文（grocery Tracker）課題へ
-  </button>
-  <button onclick="location.href='followersCount/followers_count.html'">
-    制御構文（followers Count）課題へ
-  </button>
-  <button onclick="location.href='productSurvey/product_survey.html'">
-    制御構文（product Survey）課題へ
-  </button>
-  <button onclick="location.href='restaurantMenu/restaurant_menu.html'">
-    制御構文（restaurant Menu）課題へ
-  </button>
-  <button onclick="location.href='employeeDetails/employee_details.html'">
-    制御構文（employees Detail）課題へ
-  </button><button onclick="location.href='bookSystem/book_system.html'">
-    制御構文（book system）課題へ
-  </button>
-
-  <!-- 必要に応じて他の課題ボタンを追加 -->
-  <!--
-  <button onclick="location.href='anotherFolder/another_task.html'">
-    他の課題へ
-  </button>
-  -->
+  <div id="task-buttons"></div>
 
   <script>
-    console.log("index.html が読み込まれました");
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log("index.html が読み込まれました");
+      // 課題一覧を配列で管理。追加・削除が簡単。
+      const tasks = [
+        { href: 'controlFlow/control_flow.html', label: '制御構文（control flow）課題へ' },
+        { href: 'calculateArea/grocery_Tracker.html', label: '制御構文（grocery Tracker）課題へ' },
+        { href: 'followersCount/followers_count.html', label: '制御構文（followers Count）課題へ' },
+        { href: 'productSurvey/product_survey.html', label: '制御構文（product Survey）課題へ' },
+        { href: 'restaurantMenu/restaurant_menu.html', label: '制御構文（restaurant Menu）課題へ' },
+        { href: 'employeeDetails/employee_details.html', label: '制御構文（employees Detail）課題へ' },
+        { href: 'bookSystem/book_system.html', label: '制御構文（book system）課題へ' },
+        { href: 'speedAnalysis/speed_analysis.html', label: '制御構文（speed analysis）課題へ' },
+        // ここに新しい課題を追加できます
+      ];
+
+      const container = document.getElementById('task-buttons');
+      tasks.forEach(({ href, label }) => {
+        const button = document.createElement('button');
+        button.textContent = label;
+        button.addEventListener('click', () => {
+          location.href = href;
+        });
+        container.appendChild(button);
+      });
+    });
   </script>
 </body>
 </html>
